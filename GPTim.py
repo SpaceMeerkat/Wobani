@@ -58,7 +58,7 @@ width = FHWM/(2*np.sqrt(2*np.log(2)))
 
 ### Define the prior space and sampling frequency #############################
 
-x_prior = np.arange(-6,6,0.01)
+x_prior = np.arange(x[0],x[-1],0.01)
 x_prior = x_prior.reshape(-1,1)
 mu = np.zeros(x_prior.shape)
 prior_std = 1
@@ -113,7 +113,7 @@ plt.savefig('GP example noise')
 
 ### Saving the output mean and standard deviation of the posterior ############
 
-output_data = np.transpose(np.vstack([mean_function.flat,std]))
+output_data = np.transpose(np.vstack([x_prior,mean_function.flat,std]))
 np.savetxt('Mean and 1 standard deviation GP posterior',output_data,delimiter=' ')
 
 ###############################################################################
